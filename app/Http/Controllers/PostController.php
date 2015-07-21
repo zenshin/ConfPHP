@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -51,7 +52,7 @@ class PostController extends Controller
     public function create()
     {
 
-        return view('post.create'));
+        return view('post.create');
     }
 
     /**
@@ -72,9 +73,9 @@ class PostController extends Controller
 
             $fileName = str_random(12) .'.'. $ext;
 
-            $file->move('./images/confs', $fileName);
+            $file->move('./assets/images/confs', $fileName);
 
-            $post->link_thumbnail = $fileName;
+            $post->thumbnail_link = $fileName;
             $post->save();
         }
 

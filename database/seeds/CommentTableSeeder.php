@@ -11,6 +11,13 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('comments')->insert([
+            [
+            'post_id' => 1,
+            'email' =>'kim@jongun.kp',
+            'message' => 'xlfj ldkhfsdjf msdjfsmdj m eroigjdf oijfmoijfsdmli  osijfsdmj pp',
+            'status' => 'publish'
+            ]
+        ]);
     }
 }
