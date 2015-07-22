@@ -6,7 +6,7 @@
     <p id="conf" >Prochaines conférences 2015</p>
     <nav role="navigation" id="navigation">
         <a  href="{{'/'}}">Accueil</a>
-        <a  href="#">à propos</a>
+        <a  href="{{'about'}}">à propos</a>
         <a  href="{{'contact'}}">Contact</a>
     </nav>
 </header>

@@ -31,7 +31,7 @@ class BlogController extends Controller
     {
         $post = Post::WhereRaw('status=? AND id=? AND slug=?', ['publish', (int) $id, (string) $slug])->first();
         $title = $post->title;
-        $comments = Comment::where('status', '=', 'publish')->get();
+        $comments = Comment::whereRaw('status=? AND post_id=?', ['publish', (int) $id])->get();
 
         return view('blog.single',compact('post','title','comments'));
     }
@@ -43,6 +43,20 @@ class BlogController extends Controller
 
         return view('blog.tag', compact ('posts', 'tag'));
 
+    }
+
+    public function contact()
+    {
+        $title = 'contact';
+
+        return view ('blog.contact', compact('title'));
+    }
+
+    public function about()
+    {
+        $title = 'à propos';
+
+        return view ('blog.about', compact('title'));
     }
 
 }

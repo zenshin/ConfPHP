@@ -16,7 +16,6 @@ class CommentController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('auth', ['except' => 'show']);
     }
 
     /**
@@ -50,7 +49,7 @@ class CommentController extends Controller
     public function show($id)
     {
         $comment = Comment::find($id);
-        return view('comment.show',compact('comment'));
+        return view('blog.single',compact('comment'));
     }
 
 }
