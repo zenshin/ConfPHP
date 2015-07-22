@@ -40,7 +40,6 @@ class Post extends Model
         'slug'
     ];
 
-    //mutator
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = str_slug($value);

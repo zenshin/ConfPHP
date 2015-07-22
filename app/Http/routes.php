@@ -12,8 +12,6 @@ Route::get('tag/{id}', 'BlogController@showPostByTag');
 Route::get('contact', 'BlogController@contact');
 Route::get('about', 'BlogController@about');
 
-Route::get('user', 'UserController@index');
-Route::get('user/{id}', 'UserController@show');
 /*----------------------------------------------------------------------------*\
      Auth
 \*----------------------------------------------------------------------------*/

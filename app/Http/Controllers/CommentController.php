@@ -25,7 +25,9 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('comment.create');
+        $comments = Comment::all();
+
+        return view('comment.create', compact('comments'));
     }
 
     /**
@@ -36,6 +38,7 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         Comment::create($request->all());
+        Session::flash('flash_message', 'Commentaire ajouté!');
 
         return redirect()->to('comment');
     }
@@ -49,7 +52,7 @@ class CommentController extends Controller
     public function show($id)
     {
         $comment = Comment::find($id);
-        return view('blog.single',compact('comment'));
+        return view('comment.show',compact('comment'));
     }
 
 }
