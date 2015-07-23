@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Comment;
 use App\Post;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CommentController extends Controller
 {
@@ -37,10 +38,14 @@ class CommentController extends Controller
      */
     public function store(CommentRequest $request)
     {
-        Comment::create($request->all());
+        dd($request->all());
+        $commentsList = $request->all();
+        array_merge($commentsList,['post_id'=>'$post_id']);
+        Comment::create($commentsList)->segment(2);
+        $comment->posts()->attach($request->input('posts'));
         Session::flash('flash_message', 'Commentaire ajouté!');
 
-        return redirect()->to('comment');
+        return redirect()-> to ('post');
     }
 
     /**

@@ -27,4 +27,11 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact ('title'));
     }
+
+    public function login()
+    {
+        $title = 'login';
+
+        return view('dashboard.login', compact ('title'));
+    }
 }

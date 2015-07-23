@@ -16,7 +16,7 @@
 </head>
 <body >
 @section('header')
-    @include('partials.menu')
+    @include('front.partials.menu')
 @show
 
 <div id="main" role="main">
@@ -35,7 +35,7 @@
 
 </div>
 @section('footer')
-        @include('partials.footer')
+        @include('front.partials.footer')
     @show
 </body>
 </html>

@@ -31,8 +31,7 @@
     <section id="post" >
         <aside>
             <h2>Laissez un commentaire</h2>
-            <form>
-                {!! Form::open(['url'=>'blog.single','route'=>'comment', 'method' => 'POST']) !!}
+                {!! Form::open(['url'=>'comment', 'method' => 'POST']) !!}
                 <div>
                <p>{!! Form::label('email', 'Email:',['for'=>'inputEmail3']) !!}
                     {!! Form::email('email', old('email'), ['id' => 'inputEmail3', 'placeholder' => 'Email', 'required']) !!}
@@ -47,7 +46,6 @@
                 </div>
                 {!! Form::submit('valider') !!}
                 {!! Form::close() !!}
-            </form>
         </aside>
     </section>
     <section>

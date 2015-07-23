@@ -1,4 +1,6 @@
-<?PHP namespace App\Helpers;
+<?PHP
+
+namespace App\Helpers;
 
 class MyHtml {
 

@@ -24,7 +24,7 @@ class BlogController extends Controller
         $title = 'conférences 2014';
         $comments = Comment::all();
 
-        return view('blog.index', compact('posts', 'title','comments'));
+        return view('front.index', compact('posts', 'title','comments'));
     }
 
     public function showPost($id, $slug='')
@@ -33,30 +33,21 @@ class BlogController extends Controller
         $title = $post->title;
         $comments = Comment::whereRaw('status=? AND post_id=?', ['publish', (int) $id])->get();
 
-        return view('blog.single',compact('post','title','comments'));
-    }
-    public function showPostByTag($id)
-    {
-
-        $tag = Tag::find($id);
-        $posts = $tag->post;
-
-        return view('blog.tag', compact ('posts', 'tag'));
-
+        return view('front.single',compact('post','title','comments'));
     }
 
     public function contact()
     {
         $title = 'contact';
 
-        return view ('blog.contact', compact('title'));
+        return view ('front.contact', compact('title'));
     }
 
     public function about()
     {
         $title = 'à propos';
 
-        return view ('blog.about', compact('title'));
+        return view ('front.about', compact('title'));
     }
 
 }

@@ -1,4 +1,4 @@
-pa<?php
+<?php
 
 namespace App\Http\Requests;
 

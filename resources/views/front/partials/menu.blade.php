@@ -8,6 +8,7 @@
         <a  href="{{'/'}}">Accueil</a>
         <a  href="{{'about'}}">à propos</a>
         <a  href="{{'contact'}}">Contact</a>
+        <a href="{{url('auth/login')}}">login</a>
     </nav>
 </header>
 @show

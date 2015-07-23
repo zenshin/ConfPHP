@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Request;
 
 abstract class Controller extends BaseController
 {
+    use DispatchesJobs, ValidatesRequests;
 
     public function __construct(){
 
     }
-
 
 }
