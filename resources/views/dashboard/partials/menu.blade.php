@@ -1,76 +1,117 @@
 @section('menu')
-    <header id="banner" role="banner">
-        <div id="avatar"></div>
-        <h1"><a class="link-home" href="#">Conférences PHP</a>
-        </h1>
-        <nav role="navigation" id="navigation">
-            <a  href="{{('dashboard')}}">Dashboard</a>
-            <a  href="{{url('/')}}">retour au site</a>
-            <a  href="{{url('auth/logout')}}">Se déconnecter</a>
-        </nav>
-    </header>
-
-
-
-
-    <div class="row header">
-        <div class="col-xs-12">
-            <div class="user pull-right">
-                <div class="item dropdown">
-                    <a href="#" class="dropdown-toggle">
-                        <img src="img/avatar.jpg">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-header">
-                            Joe Bloggs
-                        </li>
-                        <li class="divider"></li>
-                        <li class="link">
-                            <a href="#">
-                                Profile
-                            </a>
-                        </li>
-                        <li class="link">
-                            <a href="#">
-                                Menu Item
-                            </a>
-                        </li>
-                        <li class="link">
-                            <a href="#">
-                                Menu Item
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="link">
-                            <a href="#">
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="item dropdown">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="fa fa-bell-o"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-header">
-                            Notifications
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">Server Down!</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="meta">
-                <div class="page">
-                    Dashboard
-                </div>
-                <div class="breadcrumb-links">
-                    Home / Dashboard
-                </div>
-            </div>
-        </div>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Conférences PHP</a>
     </div>
+    <!-- Top Menu Items -->
+    <ul class="nav navbar-right top-nav">
+        <nav class="nav nav-pills" role="navigation" id="navigation">
+            <li role="presentation"><a  href="{{('dashboard')}}">Dashboard</a></li>
+            <li role="presentation"><a  href="{{url('/')}}">retour au site</a></li>
+            <li role="presentation"><a  href="{{url('auth/logout')}}">Se déconnecter</a></li>
+        </nav>
+        {{--<li class="dropdown">--}}
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>--}}
+            {{--<ul class="dropdown-menu message-dropdown">--}}
+                {{--<li class="message-preview">--}}
+                    {{--<a href="#">--}}
+                        {{--<div class="media">--}}
+                                    {{--<span class="pull-left">--}}
+                                        {{--<img class="media-object" src="http://placehold.it/50x50" alt="">--}}
+                                    {{--</span>--}}
+                            {{--<div class="media-body">--}}
+                                {{--<h5 class="media-heading"><strong>John Smith</strong>--}}
+                                {{--</h5>--}}
+                                {{--<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>--}}
+                                {{--<p>Lorem ipsum dolor sit amet, consectetur...</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="message-preview">--}}
+                    {{--<a href="#">--}}
+                        {{--<div class="media">--}}
+                                    {{--<span class="pull-left">--}}
+                                        {{--<img class="media-object" src="http://placehold.it/50x50" alt="">--}}
+                                    {{--</span>--}}
+                            {{--<div class="media-body">--}}
+                                {{--<h5 class="media-heading"><strong>John Smith</strong>--}}
+                                {{--</h5>--}}
+                                {{--<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>--}}
+                                {{--<p>Lorem ipsum dolor sit amet, consectetur...</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="message-preview">--}}
+                    {{--<a href="#">--}}
+                        {{--<div class="media">--}}
+                                    {{--<span class="pull-left">--}}
+                                        {{--<img class="media-object" src="http://placehold.it/50x50" alt="">--}}
+                                    {{--</span>--}}
+                            {{--<div class="media-body">--}}
+                                {{--<h5 class="media-heading"><strong>John Smith</strong>--}}
+                                {{--</h5>--}}
+                                {{--<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>--}}
+                                {{--<p>Lorem ipsum dolor sit amet, consectetur...</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li class="message-footer">--}}
+                    {{--<a href="#">Read All New Messages</a>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
+        {{--<li class="dropdown">--}}
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>--}}
+            {{--<ul class="dropdown-menu alert-dropdown">--}}
+                {{--<li>--}}
+                    {{--<a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>--}}
+                {{--</li>--}}
+                {{--<li class="divider"></li>--}}
+                {{--<li>--}}
+                    {{--<a href="#">View All</a>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
+        {{--<li class="dropdown">--}}
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>--}}
+            {{--<ul class="dropdown-menu">--}}
+                {{--<li>--}}
+                    {{--<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>--}}
+                {{--</li>--}}
+                {{--<li class="divider"></li>--}}
+                {{--<li>--}}
+                    {{--<a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
+    </ul>
 @show

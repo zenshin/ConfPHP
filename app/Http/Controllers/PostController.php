@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all()->sortByDesc('date_start');
 
         return view('post.index', compact('posts', 'title'));
     }
@@ -101,11 +101,22 @@ class PostController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, PostRequest $request)
     {
         Post::find($id)->update($request->all());
 
-        return redirect()->to('post')->with('message', 'success update');
+        return redirect()->to('dashboard')->with('message', 'success update');
+    }
+
+    public function updateStatus($id, PostRequest $request)
+    {
+        $post = Post::find($id)->update($request->all());
+
+        if ($post->status == 'publish') $post->status = 'unpublish';
+        else $post->status = 'publish';
+        $post->save();
+
+        return redirect()->to('dashboard')->with('message', 'success update');
     }
 
     /**
@@ -118,6 +129,6 @@ class PostController extends Controller
     {
         Post::destroy($id);
 
-        return redirect()->to('post')->with('message', 'success');
+        return redirect()->to('dashboard')->with('message', 'success');
     }
 }

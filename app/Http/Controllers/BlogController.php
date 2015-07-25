@@ -20,7 +20,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('status', '=', 'publish')->get();
+        $posts = Post::all()->sortByDesc('date_start')->where('status', 'publish');
         $title = 'conférences 2014';
         $comments = Comment::all();
 

@@ -10,7 +10,7 @@
         <article class="news">
         @if(count($posts)>0)
             @foreach($posts as $post)
-            <h2><a href="{{url('single',[$post->id, $post->slug])}}">{{$post->title}}</a></h2>
+            <h2><a href="{{url('single',[$post->slug])}}">{{$post->title}}</a></h2>
                 @if($thumb=$post->thumbnail_link)
                 <figure>
                     <a href="{{ url('single', [$post->id, $post->slug]) }}">
@@ -31,9 +31,7 @@
             @endforeach
             </p>
                 @if(count($comments)>0)
-                    @foreach($comments as $comment)
                     <p>Nombre de commentaires : {{$post->comments->count()}}</p>
-                        @endforeach
                 @endif
 
             <footer>

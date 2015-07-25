@@ -27,11 +27,32 @@
                     </footer>
             @endif
         </article>
+        <section>
+            @if($comments)
+                @foreach($comments as $c)
+                    <section>
+                        <ul>
+                            <li class="list-group-item">
+                                <h2>{{$c->email}}</h2>
+                            </li>
+                            <li class="list-group-item">
+                                {{$c->message}}
+                            </li>
+                        </ul>
+                    </section>
+
+                @endforeach
+            @else
+                <p>Désolé pas de commentaire</p>
+            @endif
+
+        </section>
     </section>
     <section id="post" >
         <aside>
             <h2>Laissez un commentaire</h2>
-                {!! Form::open(['url'=>'comment', 'method' => 'POST']) !!}
+                {!! Form::open(['url'=>'comment']) !!}
+                {!! Form::hidden('post_id', $post->id)!!}
                 <div>
                <p>{!! Form::label('email', 'Email:',['for'=>'inputEmail3']) !!}
                     {!! Form::email('email', old('email'), ['id' => 'inputEmail3', 'placeholder' => 'Email', 'required']) !!}
@@ -44,28 +65,10 @@
                 {!! Form::textarea('message', '',['id' => 'message','placeholder' => 'Ecrivez votre commentaire ici','required']) !!}
                 {!! $errors->first('message', '<span class="help-block">:message</span>') !!}
                 </div>
+
                 {!! Form::submit('valider') !!}
                 {!! Form::close() !!}
         </aside>
     </section>
-    <section>
-        @if($comments)
-            @foreach($comments as $c)
-                <section>
-                    <ul>
-                        <li class="list-group-item">
-                            <h2>{{$c->email}}</h2>
-                        </li>
-                        <li class="list-group-item">
-                            {{$c->message}}
-                        </li>
-                    </ul>
-                </section>
 
-            @endforeach
-        @else
-            <p>Désolé pas de commentaire</p>
-        @endif
-
-    </section>
 @endsection

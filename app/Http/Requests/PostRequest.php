@@ -25,9 +25,11 @@ class PostRequest extends Request
     {
         return [
             'title' => 'required',
+            'slug' => 'required',
+            'excerpt'=> 'required',
             'content' => 'required',
-            'status' => 'required',
-            'link_thumbnail' =>'mimes:jpeg,jpg,png'
+            'status' => 'required'
+//            'link_thumbnail' =>'mimes:jpeg,jpg,png'
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Comment;
 
 class DashboardController extends Controller
 {
@@ -24,8 +25,9 @@ class DashboardController extends Controller
     public function index()
     {
         $title = 'dashboard';
+        $posts = Post::all();
 
-        return view('dashboard.index', compact ('title'));
+        return view('dashboard.index', compact ('title','posts'));
     }
 
     public function login()

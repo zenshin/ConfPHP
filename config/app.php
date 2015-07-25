@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -145,6 +146,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MyHtmlServiceProvider::class,
+        LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class
+
 
     ],
 

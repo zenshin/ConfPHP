@@ -38,14 +38,9 @@ class CommentController extends Controller
      */
     public function store(CommentRequest $request)
     {
-        dd($request->all());
-        $commentsList = $request->all();
-        array_merge($commentsList,['post_id'=>'$post_id']);
-        Comment::create($commentsList)->segment(2);
-        $comment->posts()->attach($request->input('posts'));
-        Session::flash('flash_message', 'Commentaire ajouté!');
+        Comment::create($request->all());
 
-        return redirect()-> to ('post');
+        return back()->with('message', 'Commentaire ajouté!');
     }
 
     /**
