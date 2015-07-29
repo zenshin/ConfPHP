@@ -10,8 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-
-class BlogController extends Controller
+class FrontController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,20 +19,20 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->sortByDesc('date_start')->where('status', 'publish');
-        $title = 'conférences 2014';
-        $comments = Comment::all();
+        $posts = Post::Published()->sortByDesc('date_start');
+        $title = 'conférences';
 
-        return view('front.index', compact('posts', 'title','comments'));
+        return view('front.index', compact('posts', 'title'));
     }
 
-    public function showPost($id, $slug='')
+    public function showPost($id)
     {
-        $post = Post::WhereRaw('status=? AND id=? AND slug=?', ['publish', (int) $id, (string) $slug])->first();
+//        $post = Post::WhereRaw('status=? AND id=? OR slug=?', ['publish', (int) $id, (string) $slug])->first();
+        if (!$post = Post::where('slug', $id)->first())
+            $post = Post::find((int)$id);
         $title = $post->title;
-        $comments = Comment::whereRaw('status=? AND post_id=?', ['publish', (int) $id])->get();
 
-        return view('front.single',compact('post','title','comments'));
+        return view('front.conference',compact('post','title'));
     }
 
     public function contact()

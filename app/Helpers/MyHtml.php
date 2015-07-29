@@ -40,7 +40,8 @@ class MyHtml {
             }
         }
 
-        if($label) {
+        if($label)
+        {
             $radioName = (isset($radioName))? $radioName :  ucfirst($name);
             $title = (isset($title))? $title :  ucfirst($name);
             $id = (isset($id))? $id : 'id'.mt_rand(10,99);
@@ -51,7 +52,19 @@ class MyHtml {
                    </label><br>";
         }
         return "<input type=\"radio\" name =\"$radioName\" id=\"$id\" $args>"; // {!! App::make('myHtml')->radio() !!}
-
     }
 
+    public function link($title, $href)
+    {
+        return '<a href="' . $href . '">' . $title . '</a>';
+    }
+
+    public function thumb($class, $src, $alt, $href)
+    {
+        if (!empty($href))
+        {
+            return '<a href="' . $href . '"><img class="' . $class. '" src="' . asset('assets/images/confs/'.$src.'') . '" alt="' . $alt .'_image"/></a>';
+        }
+        return '<img class="' . $class . '" src="' . asset('assets/images/confs/'.$src.'') . '" alt="' . $alt . '_image"/>';
+    }
 }

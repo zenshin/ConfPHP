@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class PostController extends Controller
     {
         $posts = Post::all()->sortByDesc('date_start');
 
-        return view('post.index', compact('posts', 'title'));
+        return view('dashboard.index', compact('posts', 'title'));
     }
 
     /**
@@ -51,8 +52,10 @@ class PostController extends Controller
      */
     public function create()
     {
-
-        return view('post.create');
+        $posts = Post::all();
+        $tags = Tag::all();
+        $title = 'Créer une conférence';
+        return view('dashboard.post.create', compact('posts','tags','title'));
     }
 
     /**
@@ -65,13 +68,13 @@ class PostController extends Controller
         $post = Post::create($request->all());
         $post->tags()->attach($request->input('tags'));
 
-        if($request->hasFile('thumbnail'))
+        if($request->hasFile('thumbnail_link'))
         {
-            $file = $request->file('thumbnail');
+            $file = $request->file('thumbnail_link');
 
             $ext = $file->getClientOriginalExtension();
 
-            $fileName = str_random(12) .'.'. $ext;
+            $fileName = $post->slug .'.'. $ext;
 
             $file->move('./assets/images/confs', $fileName);
 
@@ -79,7 +82,7 @@ class PostController extends Controller
             $post->save();
         }
 
-        return redirect()->to('post');
+        return redirect()->to('dashboard');
     }
 
     /**
@@ -91,8 +94,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        $tags = Tag::all();
+        $title = 'Editer une conférence';
 
-        return view('post.edit', compact('post'));
+        return view('dashboard.post.edit', compact('post','tags', 'title'));
     }
 
     /**
@@ -103,21 +108,29 @@ class PostController extends Controller
      */
     public function update($id, PostRequest $request)
     {
-        Post::find($id)->update($request->all());
+        $post = Post::find($id)->update($request->all());
+        $post->getTag()->attach($request->input('tags'));
 
         return redirect()->to('dashboard')->with('message', 'success update');
     }
 
-    public function updateStatus($id, PostRequest $request)
+    public function updateStatus($id)
     {
-        $post = Post::find($id)->update($request->all());
+        $post = Post::find($id);
 
         if ($post->status == 'publish') $post->status = 'unpublish';
         else $post->status = 'publish';
-        $post->save();
+        $post->update();
 
         return redirect()->to('dashboard')->with('message', 'success update');
     }
+
+//    public function showComment($id)
+//    {
+//        $comments = Comment::all();
+//        $post=Post::find($id);
+//        return view('comment.show',compact('comments','post'));
+//    }
 
     /**
      * Remove the specified resource from storage.

@@ -26,8 +26,9 @@ class DashboardController extends Controller
     {
         $title = 'dashboard';
         $posts = Post::all();
+        $comments = Comment::where('status', '=', 'unpublish')->get();
 
-        return view('dashboard.index', compact ('title','posts'));
+        return view('dashboard.index', compact ('title','comments','posts'));
     }
 
     public function login()
@@ -36,4 +37,20 @@ class DashboardController extends Controller
 
         return view('dashboard.login', compact ('title'));
     }
+    public function indexComments()
+    {
+        $comments = Comment::paginate(5);
+        $title = 'Gérer les commentaires';
+        $posts = Post::all();
+
+        return view('dashboard.comment.index', compact('comments','posts','title'));
+    }
+
+    public function showUnpublishedComments()
+    {
+        $comments = Comment::where('status','=','unpublish')->paginate(1);
+        $title = 'Commentaires en attente';
+        return view('dashboard.comment.unpublished',compact('comments','title'));
+    }
+
 }

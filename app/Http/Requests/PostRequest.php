@@ -28,8 +28,11 @@ class PostRequest extends Request
             'slug' => 'required',
             'excerpt'=> 'required',
             'content' => 'required',
-            'status' => 'required'
-//            'link_thumbnail' =>'mimes:jpeg,jpg,png'
+            'status' => 'required',
+            'date_start',
+            'date_end',
+            'thumbnail_link' =>'mimes:jpeg,jpg,png',
+            'tags'
         ];
     }
 }

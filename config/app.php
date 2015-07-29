@@ -146,7 +146,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MyHtmlServiceProvider::class,
-        LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class
+        LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
 
 
     ],
@@ -197,7 +197,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-        'Html'      => Illuminate\Html\HtmlFacade::class,
+        'HTML'      => Illuminate\Html\HtmlFacade::class,
 
         /**
          * Application Facades

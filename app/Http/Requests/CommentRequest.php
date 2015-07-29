@@ -26,7 +26,8 @@ class CommentRequest extends Request
         return [
             'email' => 'required|email',
             'message' => 'required',
-            'post_id' => 'required'
+            'post_id' => 'required',
+            'status' => 'reqiredunpublish'
         ];
     }
 }

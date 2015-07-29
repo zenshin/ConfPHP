@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-<div id="main" role="main">
     <section id="post" >
         <aside>
             <h2>Laissez-nous un message</h2>
@@ -22,13 +21,13 @@
                 </div>
                 <div class="col-md-6 col-md-offset-4">
                     <input type="text" class="form-control" id="CaptchaCode"
-                           name="CaptchaCode" style="width: 276px; margin-top: 5px">
+                           name="CaptchaCode" style="width: 276px; margin: 5px 0 20px 30px;">
                 </div>
             </div>
-            <h3>
-                {!! Form::label('message', '(*)Commentaire:',['for'=>'message']) !!}
-            </h3>
             <div>
+                <h3>
+                    {!! Form::label('message', '(*)Commentaire:',['for'=>'message']) !!}
+                </h3>
                 {!! Form::textarea('message', '',['id' => 'message','placeholder' => 'Ecrivez votre commentaire ici','required']) !!}
                 {!! $errors->first('message', '<span class="help-block">:message</span>') !!}
             </div>

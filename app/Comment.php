@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Post;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -14,5 +15,14 @@ class Comment extends Model
     public function posts()
     {
         return $this->belongsTo('App\Post');
+    }
+
+    public function scopePublishedByPost($query, $post_id=null)
+    {
+        return $query->whereRaw('status=? AND post_id=?', ['publish', (int) $post_id]);
+    }
+    public function getPost()
+    {
+        return Post::find($this->post_id);
     }
 }

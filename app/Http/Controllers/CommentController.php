@@ -17,6 +17,12 @@ class CommentController extends Controller
     public function __construct()
     {
         parent::__construct();
+        $this->middleware('auth', ['except' => ['show','create','store'] ]);
+    }
+
+    public function index()
+    {
+
     }
 
     /**
@@ -26,9 +32,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        $comments = Comment::all();
 
-        return view('comment.create', compact('comments'));
+        return back()->with('message', 'Commentaire ajouté!');
     }
 
     /**
@@ -40,7 +45,9 @@ class CommentController extends Controller
     {
         Comment::create($request->all());
 
-        return back()->with('message', 'Commentaire ajouté!');
+        $request->session()->flash('message','commentaire envoyé avec succès!');
+
+        return back();
     }
 
     /**
@@ -52,7 +59,51 @@ class CommentController extends Controller
     public function show($id)
     {
         $comment = Comment::find($id);
+
         return view('comment.show',compact('comment'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $comment = Comment::find($id);
+        $title = 'editer le commentaire';
+
+        return view('dashboard.comment.edit', compact('comment','title'));
+    }
+
+    public function update($id, CommentRequest $request)
+    {
+        Comment::find($id)->update($request->all());
+
+        return redirect()->to('dashboard.comment.index')->with('message', 'success update');
+    }
+
+    public function updateStatus($id)
+    {
+        $comment = Comment::find($id);
+
+        if ($comment->status == 'publish') $comment->status = 'unpublish';
+        else $comment->status = 'publish';
+        $comment->update();
+
+        return back()->with('message', 'success update');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        Comment::destroy($id);
+        return back()->with ('message', 'success');
+    }
 }

@@ -21,18 +21,18 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">26</div>
-                        <div>New Comments!</div>
+                        <div class="huge">{{$comments->count()}}</div>
+                        <div>Nouveaux commentaires!</div>
                     </div>
                 </div>
             </div>
-            <a href="#">
+
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
+                    {!! MyHtml::link('    <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                    ', url('dashboard/comment/unpublished')) !!}
         </div>
     </div>
     <div class="col-lg-6 col-md-6">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#">
+            {!! MyHtml::link('', url('#')) !!}
                 <div class="panel-footer">
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -61,7 +61,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Conférences</h3>
+                <h3 class="panel-title"><i class="fa fa-calendar-o"></i> Conférences</h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -92,24 +92,24 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        {!! Form::open(['id' => $post->id, 'class' => 'status', 'url' => 'post/'.$post->id.'/status', 'method' => 'PUT']) !!}
-                                    <button class="btn btn-warning">
-                                    {{ $post->status == 'publish' ? 'Unpublish' : 'Publish' }}
-                                    </button>
-                                    {!! Form::close() !!}
+                                        {!! Form::open(['id' => $post->id, 'class' => 'status', 'url' => 'post/'.$post->id.'/updateStatus', 'method' => 'PUT']) !!}
+                                        <button class="btn btn-warning">
+                                            {{ $post->status == 'publish' ? 'Unpublish' : 'Publish' }}
+                                        </button>
+                                        {!! Form::close() !!}
                                     </td>
                                     <td>
-                                        <button class="btn btn-info"><a href="{{url('post/'.$post->id.'/edit')}}">Editer</a></button>
+                                        <button class="btn btn-info">{!! MyHtml::link('Editer', url('post/'.$post->id.'/edit')) !!}</button>
                                     </td>
                                     <td>
-                                    {!! Form::open(['class' => 'delete', 'url' => 'post/'.$post->id, 'method' => 'DELETE']) !!}
-                                    <button class="btn btn-danger">
-                                    Supprimer
-                                    </button>
-                                    {!! Form::close() !!}
+                                        {!! Form::open(['class' => 'delete', 'url' => 'post/'.$post->id, 'method' => 'DELETE']) !!}
+                                        <button class="btn btn-danger">
+                                            Supprimer
+                                        </button>
+                                        {!! Form::close() !!}
                                     </td>
-                            @endforeach
-                        @endif
+                                    @endforeach
+                                    @endif
                                 </tr>
 
                         </tbody>
@@ -117,8 +117,8 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
-</div>
 <!-- /.row -->
 
 @endsection

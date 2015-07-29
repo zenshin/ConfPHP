@@ -5,10 +5,9 @@
     </h1>
     <p id="conf" >Prochaines conférences 2015</p>
     <nav role="navigation" id="navigation">
-        <a  href="{{'/'}}">Accueil</a>
-        <a  href="{{'about'}}">à propos</a>
-        <a  href="{{'contact'}}">Contact</a>
-        <a href="{{url('auth/login')}}">login</a>
+        {!! MyHtml::link('Accueil', url('/')) !!}
+        {!! MyHtml::link('à propos', url('about')) !!}
+        {!! MyHtml::link('Contact', url('contact')) !!}
     </nav>
 </header>
 @show

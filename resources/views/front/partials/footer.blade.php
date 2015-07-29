@@ -1,9 +1,10 @@
 @section('footer')
     <footer id="footer">
         <nav>
-            <a  href="{{'/'}}">Accueil</a>
-            <a  href="*">Mentions légales</a>
-            <a  href="{{'contact'}}">Contact</a>
+            {!! MyHtml::link('Accueil', url('/')) !!}
+            {!! MyHtml::link('Mentions légales', url('*')) !!}
+            {!! MyHtml::link('Contact', url('contact')) !!}
+            {!! MyHtml::link('admin', url('dashboard')) !!}
         </nav>
     </footer>
 @show

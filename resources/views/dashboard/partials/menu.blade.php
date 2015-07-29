@@ -6,14 +6,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Conférences PHP</a>
+        <a class="navbar-brand" href="{{'/'}}">Conférences PHP</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <nav class="nav nav-pills" role="navigation" id="navigation">
-            <li role="presentation"><a  href="{{('dashboard')}}">Dashboard</a></li>
-            <li role="presentation"><a  href="{{url('/')}}">retour au site</a></li>
-            <li role="presentation"><a  href="{{url('auth/logout')}}">Se déconnecter</a></li>
+            <li role="presentation">{!! MyHtml::link('Dashboard', url('dashboard')) !!}</li>
+            <li role="presentation">{!! MyHtml::link('retour au site', url('/')) !!}</li>
+            <li role="presentation">{!! MyHtml::link('Se déconnecter', url('auth/logout')) !!}</li>
         </nav>
         {{--<li class="dropdown">--}}
             {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>--}}

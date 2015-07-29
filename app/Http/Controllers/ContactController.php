@@ -42,7 +42,7 @@ class ContactController extends Controller
     }
 
     //Contact Form
-    public function getContactUsForm()
+    public function getContactUsForm(Request $request)
     {
         $title = 'contact';
 
@@ -50,11 +50,12 @@ class ContactController extends Controller
         $captcha = $this->getContactCaptchaInstance();
 
         // validate the user-entered Captcha code when the form is submitted
-        $code = Request::input('CaptchaCode');
+        $code = $request->input('CaptchaCode');
         $isHuman = $captcha->Validate($code);
 
         //Get all the data and store it inside Store Variable
-        $data = Input::all();
+        $data = $request->
+        all();
 
         //Validation rules
         $rules = array(

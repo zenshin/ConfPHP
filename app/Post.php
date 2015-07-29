@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Comment;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -26,6 +27,15 @@ class Post extends Model
     {
         return Carbon::parse($value)->format('d-m-Y H:i:s');
     }
+    public function setDateStartAttribute($value)
+    {
+        $this->attributes['date_start'] = Carbon::createFromFormat('d-m-Y H:i:s', $value)->toDateTimeString();
+    }
+    public function setDateEndAttribute($value)
+    {
+        $this->attributes['date_end'] = Carbon::createFromFormat('d-m-Y H:i:s', $value)->toDateTimeString();
+    }
+
 
     protected $fillable =[
         'title',
@@ -59,11 +69,23 @@ class Post extends Model
         return $this->belongsToMany('App\Tag');
     }
     //scope
-    public function scopePublished($query, $id=null)
+    public function scopePublished($query)
     {
-        if(is_null($id))
-
-            return $query->whereRaw('status=? AND id=?', ['publish', (int) $id]);
+        return $query->where('status','publish')->orderBy('date_start')->get();
     }
 
+    public function getComment()
+    {
+        return Comment::PublishedByPost($this->id)->get();
+    }
+
+    public function countComment()
+    {
+        return $this->getComment()->count();
+    }
+
+    public function getTag()
+    {
+        return Tag::find($this->tag_id);
+    }
 }
