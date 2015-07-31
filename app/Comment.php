@@ -19,7 +19,7 @@ class Comment extends Model
 
     public function scopePublishedByPost($query, $post_id=null)
     {
-        return $query->whereRaw('status=? AND post_id=?', ['publish', (int) $post_id]);
+        return $query->whereRaw('status=? AND post_id=?', ['publié', (int) $post_id]);
     }
     public function getPost()
     {

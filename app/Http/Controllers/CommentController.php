@@ -10,14 +10,14 @@ use App\Http\Requests\CommentRequest;
 use App\Comment;
 use App\Post;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Alert;
 
 class CommentController extends Controller
 {
-
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('auth', ['except' => ['show','create','store'] ]);
+        $this->middleware('auth', ['only' => ['edit','update'] ]);
     }
 
     public function index()
@@ -32,8 +32,11 @@ class CommentController extends Controller
      */
     public function create()
     {
-
-        return back()->with('message', 'Commentaire ajouté!');
+//        $comments = Comment::all();
+//        $posts = Post::all();
+//
+//        return view('dashboard.comment.create', compact('comments','posts'));
+//
     }
 
     /**
@@ -45,8 +48,7 @@ class CommentController extends Controller
     {
         Comment::create($request->all());
 
-        $request->session()->flash('message','commentaire envoyé avec succès!');
-
+//        return back()->with('message', Alert::message('commentaire envoyé avec succès! Il sera publié après vérification de l\'équipe','success'));
         return back();
     }
 
@@ -58,9 +60,9 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $comment = Comment::find($id);
-
-        return view('comment.show',compact('comment'));
+//        $comment = Comment::find($id);
+//
+//        return view('comment.show',compact('comment'));
     }
 
     /**
@@ -81,18 +83,29 @@ class CommentController extends Controller
     {
         Comment::find($id)->update($request->all());
 
-        return redirect()->to('dashboard.comment.index')->with('message', 'success update');
+        return redirect()->to('dashboard/comment/index')->with('message', Alert::message('commentaire modifié avec succès!','success'));
     }
 
     public function updateStatus($id)
     {
         $comment = Comment::find($id);
 
-        if ($comment->status == 'publish') $comment->status = 'unpublish';
-        else $comment->status = 'publish';
+        if ($comment->status == 'publié') $comment->status = 'dépublié';
+        else $comment->status = 'publié';
         $comment->update();
 
-        return back()->with('message', 'success update');
+        return back()->with('message', Alert::message('commentaire '.$comment->status. ' avec succès!' ,'success'));
+    }
+
+    public function updateSpamStatus($id)
+    {
+        $comment = Comment::find($id);
+
+        if ($comment->status == 'publié'|'dépublié') $comment->status = 'spam';
+        else $comment->status = 'dépublié';
+        $comment->update();
+
+        return back()->with('message', Alert::message('statut du commentaire modifié en :'.$comment->status. ' avec succès!' ,'success'));
     }
 
     /**
@@ -104,6 +117,6 @@ class CommentController extends Controller
     public function destroy($id)
     {
         Comment::destroy($id);
-        return back()->with ('message', 'success');
+        return back()->with ('message', Alert::message('commentaire supprimé avec succès!','danger'));
     }
 }

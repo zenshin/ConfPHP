@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->integer('post_id')->unsigned()->nullable();
             $table->string('email',100)->nullable();
             $table->text('message');
-            $table->enum('status', ['publish', 'unpublish'])->default('unpublish');
+            $table->enum('status', ['publié', 'dépublié', 'spam'])->default('dépublié');
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')

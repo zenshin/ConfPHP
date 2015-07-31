@@ -8,6 +8,7 @@ use App\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CommentRequest;
 use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
@@ -27,12 +28,20 @@ class FrontController extends Controller
 
     public function showPost($id)
     {
-//        $post = Post::WhereRaw('status=? AND id=? OR slug=?', ['publish', (int) $id, (string) $slug])->first();
         if (!$post = Post::where('slug', $id)->first())
             $post = Post::find((int)$id);
         $title = $post->title;
 
         return view('front.conference',compact('post','title'));
+    }
+
+    public function showPostByTag($name){
+
+        $tag = Tag::where('name',$name)->first();
+        $posts = $tag->post;
+        $title = $tag->name;
+
+        return view('front.tag', compact('tag','posts','title'));
     }
 
     public function contact()
@@ -48,5 +57,12 @@ class FrontController extends Controller
 
         return view ('front.about', compact('title'));
     }
+
+//    public function storeComment(CommentRequest $request)
+//    {
+//        Comment::create($request->all());
+//
+//        return back();
+//    }
 
 }

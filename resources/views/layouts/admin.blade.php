@@ -69,6 +69,7 @@
                         </ol>
                     </div>
                 </div>
+                @include('dashboard.partials.alert')
          @yield('content')
             </div>
             <!-- /.container-fluid -->

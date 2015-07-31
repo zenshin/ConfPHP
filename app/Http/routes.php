@@ -9,6 +9,9 @@ Route::pattern('id','[1-9][0-9]*');
 Route::get('/', 'FrontController@index');
 Route::get('conference/{slug}', 'FrontController@showPost');
 Route::get('about', 'FrontController@about');
+Route::get('tag/{name}','FrontController@showPostByTag');
+
+//Route::post('conference/comment','FrontController@storeComment');
 
 Route::get('contact', 'ContactController@getContact');
 Route::post('contact_request','ContactController@getContactUsForm');
@@ -36,15 +39,24 @@ Route::get('dashboard/comment/index', 'Admin\DashboardController@indexComments')
      controllers REST
 \*----------------------------------------------------------------------------*/
 
-Route::resource('comment', 'CommentController');
+Route::resource('dashboard/comment', 'CommentController');
 Route::resource('post', 'PostController');
 
 /*----------------------------------------------------------------------------*\
      custom REST
 \*----------------------------------------------------------------------------*/
-Route::put('comment/{id}/updateStatus', 'CommentController@updateStatus');
-Route::get('dashboard/comment/{id}/edit', 'CommentController@edit');
-Route::get('dashboard/comment/{id}', 'CommentController@destroy');
-Route::get('dashboard/comment/{id}', 'CommentController@update');
+//Route::get('dashboard/comment/create', 'CommentController@create');
+//Route::get('dashboard/commentStore', 'CommentController@store');
+//Route::get('dashboard/comment/{id}/edit', 'CommentController@edit');
+//Route::put('dashboard/comment/{id}', 'CommentController@update');
+//Route::delete('dashboard/comment/{id}', 'CommentController@destroy');
 
+//GET 		comment/create		index		comment/create.blade.php
+//POST 		comment 			store		“traitement dans l’action”
+//GET 		comment/{id}/edit	edit		comment/edit.blade.php
+//PUT 		comment/{id}		update	     “traitement dans l’action”
+//DELETE    comment/{id}	                 delete              “création d’un template
+
+Route::put('comment/{id}/updateStatus', 'CommentController@updateStatus');
+Route::put('comment/{id}/updateSpamStatus', 'CommentController@updateSpamStatus');
 Route::put('post/{id}/updateStatus', 'PostController@updateStatus');

@@ -24,7 +24,7 @@ class PostTableSeeder extends Seeder
             'date_end' =>'2014-10-31 18:00:00',
             'thumbnail_link' => 'symfony_madrid.png',
             'url_site'=>'http://berlin2014.live.symfony.com/',
-            'status' => 'publish',
+            'status' => 'publié',
         ],
         [
             'user_id' => 1,
@@ -36,7 +36,7 @@ class PostTableSeeder extends Seeder
             'date_end' =>'2014-09-26 18:00:00',
             'thumbnail_link' => 'symfony_london.png',
             'url_site'=>'http://london2014.live.symfony.com/',
-            'status' => 'publish',
+            'status' => 'publié',
         ],
         [
             'user_id' => 1,
@@ -48,7 +48,7 @@ class PostTableSeeder extends Seeder
             'date_end' =>'2014-09-24 18:00:00',
             'thumbnail_link' => 'laravel_amsterdam2014.jpg',
             'url_site'=>'http://laracon.eu/2014/',
-            'status' => 'publish',
+            'status' => 'publié',
         ],
         [
             'user_id' => 1,
@@ -60,7 +60,7 @@ class PostTableSeeder extends Seeder
             'date_end' =>'2014-06-23 18:00:00',
             'thumbnail_link' => 'rasmusLerdorf.jpg',
             'url_site'=>'http://afup.org/pages/phptourlyon2014/',
-            'status' => 'publish',
+            'status' => 'publié',
         ],
 
     ]);

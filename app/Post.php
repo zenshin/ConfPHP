@@ -11,13 +11,7 @@ class Post extends Model
 {
     use SoftDeletes;
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-        'date_start',
-        'date_end'
-    ];
+    protected $dates = ['deleted_at'];
 
     public function getDateStartAttribute($value)
     {
@@ -71,7 +65,7 @@ class Post extends Model
     //scope
     public function scopePublished($query)
     {
-        return $query->where('status','publish')->orderBy('date_start')->get();
+        return $query->where('status','publié')->orderBy('date_start')->get();
     }
 
     public function getComment()

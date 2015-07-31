@@ -11,6 +11,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 
+use Alert;
+
 class PostController extends Controller
 {
 
@@ -28,6 +30,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all()->sortByDesc('date_start');
+        $title = 'dashboard';
 
         return view('dashboard.index', compact('posts', 'title'));
     }
@@ -40,9 +43,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-
-        return view('post.single', compact('post'));
+//        $post = Post::find($id);
+//
+//        return view('post.single', compact('post'));
     }
 
     /**
@@ -82,7 +85,7 @@ class PostController extends Controller
             $post->save();
         }
 
-        return redirect()->to('dashboard');
+        return redirect()->to('dashboard')->with('message', Alert::message('conférence "' .$post->title. '" créée avec succès','success'));
     }
 
     /**
@@ -108,29 +111,39 @@ class PostController extends Controller
      */
     public function update($id, PostRequest $request)
     {
-        $post = Post::find($id)->update($request->all());
-        $post->getTag()->attach($request->input('tags'));
+        $post = Post::find($id);
+        $post->tags()->detach();
+        $post->update($request->all());
+        $post->tags()->attach($request->input('tags'));
 
-        return redirect()->to('dashboard')->with('message', 'success update');
+        if($request->hasFile('thumbnail_link'))
+        {
+            $file = $request->file('thumbnail_link');
+
+            $ext = $file->getClientOriginalExtension();
+
+            $fileName = $post->slug .'.'. $ext;
+
+            $file->move('./assets/images/confs', $fileName);
+
+            $post->thumbnail_link = $fileName;
+            $post->save();
+        }
+
+
+        return redirect()->to('dashboard')->with('message', Alert::message('conférence "' . $post->title . '" modifiée avec succès', 'info'));
     }
 
     public function updateStatus($id)
     {
         $post = Post::find($id);
 
-        if ($post->status == 'publish') $post->status = 'unpublish';
-        else $post->status = 'publish';
+        if ($post->status == 'publié') $post->status = 'dépublié';
+        else $post->status = 'publié';
         $post->update();
 
-        return redirect()->to('dashboard')->with('message', 'success update');
+        return redirect()->to('dashboard')->with('message', Alert::message('Conférence ' .$post->status. 'e avec succès', 'info'));
     }
-
-//    public function showComment($id)
-//    {
-//        $comments = Comment::all();
-//        $post=Post::find($id);
-//        return view('comment.show',compact('comments','post'));
-//    }
 
     /**
      * Remove the specified resource from storage.
@@ -142,6 +155,6 @@ class PostController extends Controller
     {
         Post::destroy($id);
 
-        return redirect()->to('dashboard')->with('message', 'success');
+        return redirect()->to('dashboard')->with('message', Alert::message('conférence supprimée avec succès', 'danger'));
     }
 }

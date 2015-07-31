@@ -1,17 +1,11 @@
 @extends('layouts.admin')
 
+@section('title')
+{{$title}}
+@endsection
+
 @section('content')
 <!-- /.row -->
-<div class="row">
-    <div class="col-lg-12">
-        <div class="alert alert-info alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <i class="fa fa-info-circle"></i>  <strong>mise à jour effectuée</strong>
-        </div>
-    </div>
-</div>
-<!-- /.row -->
-
 <div class="row">
     <div class="col-lg-6 col-md-6">
         <div class="panel panel-primary">
@@ -94,7 +88,7 @@
                                     <td>
                                         {!! Form::open(['id' => $post->id, 'class' => 'status', 'url' => 'post/'.$post->id.'/updateStatus', 'method' => 'PUT']) !!}
                                         <button class="btn btn-warning">
-                                            {{ $post->status == 'publish' ? 'Unpublish' : 'Publish' }}
+                                            {{ $post->status == 'publié' ? 'Dépublier' : 'Publier' }}
                                         </button>
                                         {!! Form::close() !!}
                                     </td>

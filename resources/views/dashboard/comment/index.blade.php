@@ -12,6 +12,7 @@
                 <tr>
                     <th>statut</th>
                     <th>changer de statut</th>
+                    <th>spam</th>
                     <th>editer</th>
                     <th>supprimer</th>
                     <th>email</th>
@@ -30,7 +31,14 @@
                             <td>
                                 {!! Form::open(['id' => $comment->id, 'class' => 'status', 'url' => 'comment/'.$comment->id.'/updateStatus', 'method' => 'PUT']) !!}
                                 <button class="btn btn-warning">
-                                    {{ $comment->status == 'publish' ? 'Unpublish' : 'Publish' }}
+                                    {{ $comment->status == 'publié' ? 'Dépublier' : 'Publier' }}
+                                </button>
+                                {!! Form::close() !!}
+                            </td>
+                            <td>
+                                {!! Form::open(['id' => $comment->id, 'class' => 'status', 'url' => 'comment/'.$comment->id.'/updateSpamStatus', 'method' => 'PUT']) !!}
+                                <button class="btn btn-success">
+                                    {{ $comment->status = 'spam' }}
                                 </button>
                                 {!! Form::close() !!}
                             </td>
@@ -55,9 +63,7 @@
                                     <p>Désolé pas de commentaire</p>
                                 </article>
                             @endif
-
                         </tr>
-
                 </tbody>
             </table>
         </div>

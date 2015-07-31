@@ -16,7 +16,7 @@ class CommentTableSeeder extends Seeder
             'post_id' => 1,
             'email' =>'kim@jongun.kp',
             'message' => 'exemple',
-            'status' => 'publish'
+            'status' => 'publié'
             ]
         ]);
     }

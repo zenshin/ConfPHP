@@ -30,9 +30,9 @@
                         </button>
                         {!! Form::close() !!}
 
-                        <button type="button" class="btn btn-info">{!! MyHtml::link('Editer', url('dashboard/comment/'.$comment->id.'/edit')) !!}</button>
+                        <button type="button" class="btn btn-info">{!! MyHtml::link('Editer', url('comment/'.$comment->id.'/edit')) !!}</button>
 
-                        {!! Form::open(['class' => 'delete', 'url' => 'dashboard/comment/'.$comment->id, 'method' => 'DELETE']) !!}
+                        {!! Form::open(['class' => 'delete', 'url' => 'comment/'.$comment->id, 'method' => 'DELETE']) !!}
                         <button class="btn btn-danger">
                             Supprimer
                         </button>

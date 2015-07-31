@@ -18,7 +18,7 @@
 
                     <p class="link-keyword" >Mots clefs:
                         @foreach($post->tags as $tag)
-                            {!! MyHtml::link($tag->name, url('tag/'.$tag->id)) !!}
+                            {!! MyHtml::link($tag->name, url('tag/'.$tag->name)) !!}
                         @endforeach
                     </p>
 
@@ -46,9 +46,5 @@
         @endif
 
     </section>
-    <section>
-@section('postComment')
-@include('dashboard.comment.create')
-@show
-    </section>
+@include('front.comment.create')
 @endsection

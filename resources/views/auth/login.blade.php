@@ -6,7 +6,7 @@
         {!! Form::open(['class' => 'form-horizontal']) !!}
 
         <div class="form-group">
-            {!! Form::label('name', 'username(*): ',['class' => 'col-sm-2 col-md-2 col-lg-2 control-label', 'for'=>'username']) !!}
+            {!! Form::label('name', 'username(*): ',['class' => 'col-sm-2 col-md-2 col-lg-2 form-control control-label', 'for'=>'username']) !!}
             <div class="col-sm-10">
                 {!! Form::text('name', old('username'), ['class' => 'form-control', 'id' => 'username', 'placeholder' => 'username', 'required']) !!}
                 {!! $errors->first('name', ':message') !!}

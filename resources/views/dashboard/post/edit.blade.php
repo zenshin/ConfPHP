@@ -1,79 +1,78 @@
 @extends('layouts.admin')
 
+@section('title')
+    {{$title}}
+@endsection
+
 @section('content')
+    <div class="col-lg-7">
 
     {!! Form::open(['url'=>'post/'.$post->id, 'method' => 'PUT', 'files'=>true]) !!}
 
     <p>{!! form::label('title', 'Titre :' , ['required']) !!}
-        {!! Form::text('title', $post->title, ['required']) !!}</p>
+        {!! Form::text('title', $post->title, ['class'=>'form-control','required']) !!}</p>
     {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
 
     <p>{!! form::label('slug','slug :' , ['required']) !!}
-        {!! Form::text('slug', $post->slug, ['required']) !!}</p>
+        {!! Form::text('slug', $post->slug, ['class'=>'form-control','required']) !!}</p>
     {!! $errors->first('slug', '<span class="help-block">:message</span>') !!}
 
     <p>{!! form::label('excerpt', 'texte court:' , ['required']) !!}
-        {!! Form::textarea('excerpt', $post->excerpt, ['required']) !!}</p>
+        {!! Form::textarea('excerpt', $post->excerpt, ['class'=>'form-control','required']) !!}</p>
     {!! $errors->first('excerpt', '<span class="help-block">:message</span>') !!}
 
     <p>{!! form::label('content','texte long:' , ['required']) !!}
-        {!! Form::textarea('content', $post->content, ['required']) !!}</p>
+        {!! Form::textarea('content', $post->content, ['class'=>'form-control','required']) !!}</p>
     {!! $errors->first('content', '<span class="help-block">:message</span>') !!}
 
     <div class="container">
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker6'>
-    <p>{!! form::label('date_start','date de début: ' , ['required']) !!}
-        {!! Form::text('date_start', $post->date_start, ['class'=>'form-control','required']) !!}</p>
-                        {!! $errors->first('date_start', '<span class="help-block">:message</span>') !!}
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                </div>
+        <div class="form-group input-group col-md-4">
+            <div class='input-group date' id='datetimepicker6'>
+                {!! form::label('date_start',' date de début: ' , ['class'=>'input-group-addon','required']) !!}
+                {!! Form::text('date_start', $post->date_start, ['class'=>'form-control','required']) !!}
+                {!! $errors->first('date_start', '<span class="help-block">:message</span>') !!}
+                <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker7'>
-    <p>{!! form::label('date_end', 'date de fin: ', ['required']) !!}
-        {!! Form::text('date_end', $post->date_end, ['class'=>'form-control','required']) !!}</p>
-                        {!! $errors->first('date_end', '<span class="help-block">:message</span>') !!}
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                </div>
+        <div class="form-group input-group col-md-4">
+            <div class='input-group date' id='datetimepicker7'>
+                {!! form::label('date_end', 'date de fin: ', ['class'=>'input-group-addon','required']) !!}
+                {!! Form::text('date_end', $post->date_end, ['class'=>'form-control','required']) !!}
+                {!! $errors->first('date_end', '<span class="help-block">:message</span>') !!}
+                <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
             </div>
         </div>
     </div>
 
 
     <div>
-    <h2>file image</h2>
     {!! form::label('thumbnail_link', 'photo: ' , ['required']) !!}
     {!! Form::file('thumbnail_link') !!}
     </div>
 
-    {{--<div>--}}
-        {{--{!! Form::label('tags', 'Tags', ['required']) !!}--}}
-        {{--@foreach($tags as $tag)--}}
-            {{--{!! Form::checkbox('tags[]') !!}--}}
-            {{--{{ $tag->name }}--}}
-        {{--@endforeach--}}
-    {{--</div>--}}
-
+        {!! Form::label('status', 'Statut: ', ['required']) !!}
     <div class="radio-inline">
-        {!! MyHtml::radio('status',['title'=>'publish', 'name'=>'status','id'=>'inlineRadioOptions1', 'value'=>'publish']) !!}
+        {!! MyHtml::radio('status',['class'=>'radio-inline', 'title'=>'publier', 'name'=>'status','id'=>'inlineRadioOptions1', 'value'=>'publié']) !!}
     </div>
     <div class="radio-inline">
-        {!! MyHtml::radio('status',['title'=>'unpublish', 'name'=>'status', 'id'=>'inlineRadioOptions2', 'value'=>'unpublish'] ) !!}
+        {!! MyHtml::radio('status',['class'=>'radio-inline','title'=>'dépublier', 'name'=>'status', 'id'=>'inlineRadioOptions2', 'value'=>'dépublié'] ) !!}
     </div>
-
-
-    {!! Form::submit('Update') !!}
-
+    <div class="form-group">
+        {!! Form::label('tags', 'Tags:', ['required']) !!}
+        @foreach($tags as $tag)
+            <div class="checkbox col-lg-offset-2">
+            {!! Form::checkbox('tags[]', $tag->id, $post->tags->where('id', $tag->id)->count() != 0,['class'=>'checkbox-inline']) !!}
+            {{ $tag->name }}
+            </div>
+        @endforeach
+    </div>
+<div>
+    {!! Form::submit('Enregister', ['class' => 'btn btn-warning']) !!}
+</div>
     {!! Form::close() !!}
 
 @endsection

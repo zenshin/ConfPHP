@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->dateTime('date_end');
             $table->string('thumbnail_link');
             $table->string('url_site');
-            $table->enum('status', ['publish', 'unpublish'])->default('unpublish');
+            $table->enum('status', ['publié', 'dépublié'])->default('dépublié');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

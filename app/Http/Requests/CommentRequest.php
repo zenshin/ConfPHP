@@ -27,7 +27,7 @@ class CommentRequest extends Request
             'email' => 'required|email',
             'message' => 'required',
             'post_id' => 'required',
-            'status' => 'reqiredunpublish'
+            'status'
         ];
     }
 }
