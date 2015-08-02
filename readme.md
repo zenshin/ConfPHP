@@ -14,7 +14,7 @@ To install Conf PHP :
 
 3 Open your favourite web browser on the link below:
 
-    http://localhost:8000
+    localhost:8000
 
 ## What's included?
         PHP in case you don't already have it : php 5.5.9,
