@@ -1,0 +1,220 @@
+@import url(http://fonts.googleapis.com/css?family=Cousine);
+@import url(http://fonts.googleapis.com/css?family=Podkova);
+/*general*/
+
+body{
+    font-family: 'Cousine' ;
+    background-image: linear-gradient(to bottom, #8DD0DB 0%, #ACDEE3 40%, #ACDEE3 100%);
+    color: #1C5E64;
+    font-size: 0.8em; 
+    line-height: 1.5;
+}
+
+/*liens du site*/
+.link, .link-post, .link-keyword a, .link-outside{
+    color: #E66067;
+    text-decoration: none;
+}
+
+.link-keyword{
+    padding:6px 0;
+    clear:both;
+}
+
+.link-post:hover{
+    color: rgba(0, 0, 0, 0.40);
+    text-decoration: underline;
+}
+
+/*titres du site*/
+h2 {
+    color: #E66067;
+    font-size: 1.5rem;
+    margin:1rem 0 0 0;
+}
+
+/* ----------------------------- @top --------------------------------------- */
+
+#top{
+    position: fixed;
+    bottom: 22%;
+    right: 10%;
+    background-color: rgba(0, 0, 0, 0.22);
+    border-radius: 4rem;
+    color: #335271;
+    padding: 10px;
+}
+#top a {
+    text-decoration: none;
+    color:#E66067;
+    font-weight: bold;
+}
+
+header#banner{
+    z-index: 1;
+    position: fixed;
+    top:0; left: 0;
+    height: 150px;
+    width: 90%;
+    background-color: rgba(248,248,255, 0.80);
+    padding: 0 0rem 2rem 10%; 
+    box-shadow: 0px 0px 3px 0 #aaa;
+}
+header#banner:after{
+    content:"";
+    display: block;
+    height: 2px;
+}
+header#banner h1 {
+    font-size: 3rem; 
+    margin-right: 4px;
+    margin-top: 0px;
+    text-align: left;
+    color: #000;
+}
+
+h1#afup, p#conf{
+    font-family: "Podkova",serif;
+}
+
+h1#afup span{
+    font-size: 1rem;
+}
+h1#afup a{
+    color:#335271;
+    text-decoration: none;
+}
+
+p#conf {
+    font-size: 2rem;
+    position: absolute;
+    right: 450px;
+    top: 4px;
+}
+
+
+/*navigation*/
+
+#navigation{
+    margin-top: 45px;
+}
+
+nav a {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 4rem;
+    color: #335271;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0 0 4px;
+    overflow: hidden;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    transition: background-color 2s ease 0s;
+    vertical-align: middle;
+}
+nav a:first-letter{
+    text-transform: uppercase;
+}
+
+nav a:hover{
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
+/* ---------- @content -------------------------------------------------------*/
+
+div#main{
+    margin: 200px auto 0 auto;
+    padding: 1px;
+    width:960px;
+    min-height: 500px;
+}
+
+section#post{
+    width: 65%;
+    display: inline-block;
+    padding: 1px 0;
+}
+section#about{
+    width: 65%;
+    display: inline-block;
+    padding: 1px 0;
+    text-align: justify;
+}
+/*gestion des articles*/
+
+section#post > article:first-child{
+    margin: 0rem 2rem 1rem 2rem; padding: 1px 0;
+}
+
+section#post > article {
+    margin: 1rem 2rem; padding: 1px 0;
+    text-align: left;
+}
+
+section#post > article:after{
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+
+h3.date {
+    background: none repeat scroll 0 0 #F7911E;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    padding: 5px 6px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: skew(-9deg) rotate(-1deg);
+    z-index: -1;
+    font-size: 0.8rem;
+}
+
+img.left{
+    border: 2px solid #FFFFFF;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0 1rem 0 0;
+    float:left;
+}
+
+img.logo{
+    margin-bottom: 20px;
+    display: block;
+}
+
+p.abstract{
+    margin: 0;
+}
+
+/* -------------- @sidebar --------------------------------------------------- */
+
+section#sidebar{
+    width: 30%;
+    padding: 1px 0;
+    top: 182px; right: 0;
+    position: fixed;
+}
+
+
+
+/* -------------- @footer --------------------------------------------------- */
+footer#footer{
+    background: none repeat scroll 0 0 rgba(119, 136, 153, 0.8);
+    border-radius: 4px;
+    color: #FFFFFF;
+    margin-top: 4rem;
+    padding: 1rem;
+    /*text-align: center;*/
+}
+
+
+/* ------------- @404 ------------------------------------------------------- */
+
+h1[class="404"] {
+    font-size: 12rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}

@@ -8,6 +8,7 @@
     <section id="post" >
         <aside>
             <h2>Laissez-nous un message</h2>
+            @include('front.partials.alert')
             <p><em>(*) champs obligatoires</em></p>
             {!! Form::open(['url'=>'contact_request']) !!}
             <div>

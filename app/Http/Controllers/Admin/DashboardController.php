@@ -26,7 +26,7 @@ class DashboardController extends Controller
     {
         $title = 'dashboard';
         $posts = Post::all();
-        $comments = Comment::where('status', '=', 'unpublish')->get();
+        $comments = Comment::where('status', '=', 'dépublié')->get();
 
         return view('dashboard.index', compact ('title','comments','posts'));
     }
@@ -48,7 +48,7 @@ class DashboardController extends Controller
 
     public function showUnpublishedComments()
     {
-        $comments = Comment::where('status','=','unpublish')->paginate(1);
+        $comments = Comment::where('status','=','dépublié')->paginate(1);
         $title = 'Commentaires en attente';
         return view('dashboard.comment.unpublished',compact('comments','title'));
     }
