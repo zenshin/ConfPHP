@@ -25,6 +25,11 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::get('logout','Auth\AuthController@getLogout');
+Route::post('login','Auth\AuthController@postLogin');
+
 /*----------------------------------------------------------------------------*\
      Dashboard
 \*----------------------------------------------------------------------------*/
