@@ -57,5 +57,11 @@ class FrontController extends Controller
 
         return view ('front.about', compact('title'));
     }
+    public function legal()
+    {
+        $title = 'mentions légales';
+
+        return view ('front.legal', compact('title'));
+    }
 
 }

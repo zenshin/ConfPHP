@@ -9,6 +9,7 @@ Route::pattern('id','[1-9][0-9]*');
 Route::get('/', 'FrontController@index');
 Route::get('conference/{slug}', 'FrontController@showPost');
 Route::get('about', 'FrontController@about');
+Route::get('mentions_legales', 'FrontController@legal');
 Route::get('tag/{name}','FrontController@showPostByTag');
 
 //Route::post('conference/comment','FrontController@storeComment');
