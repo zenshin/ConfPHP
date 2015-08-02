@@ -38,10 +38,12 @@ EOF
 )
 
 echo $ENV > .env
-php artisan key:generate
 
 #migrate and seed databases
 php artisan migrate --seed
+
+#generate Env key
+php artisan key:generate
 
 #start the server localhost:8000
 php artisan serve
