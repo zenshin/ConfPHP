@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use LaravelCaptcha\Integration\BotDetectCaptcha;
-use App\Facades\Alert;
+use App\Facades\MyAlert;
 
 class ContactController extends Controller
 {
@@ -94,7 +94,7 @@ class ContactController extends Controller
             });
             return redirect()
                 ->back()
-                ->with('message', Alert::message('email envoyé avec succès!','success'));
+                ->with('message', MyAlert::message('email envoyé avec succès!','success'));
 
         }
         else

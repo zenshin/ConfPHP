@@ -58,11 +58,4 @@ class FrontController extends Controller
         return view ('front.about', compact('title'));
     }
 
-//    public function storeComment(CommentRequest $request)
-//    {
-//        Comment::create($request->all());
-//
-//        return back();
-//    }
-
 }

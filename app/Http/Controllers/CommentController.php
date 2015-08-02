@@ -10,7 +10,7 @@ use App\Http\Requests\CommentRequest;
 use App\Comment;
 use App\Post;
 use Symfony\Component\HttpFoundation\Session\Session;
-use App\Facades\Alert;
+use App\Facades\MyAlert;
 
 
 class CommentController extends Controller
@@ -45,7 +45,7 @@ class CommentController extends Controller
     {
         Comment::create($request->all());
 
-        return back()->with('message', Alert::message('commentaire envoyé avec succès! Il sera publié après vérification de l\'équipe','success'));
+        return back()->with('message', MyAlert::message('commentaire envoyé avec succès! Il sera publié après vérification de l\'équipe','success'));
     }
 
     /**
@@ -77,7 +77,7 @@ class CommentController extends Controller
     {
         Comment::find($id)->update($request->all());
 
-        return redirect()->to('dashboard/comment/index')->with('message', Alert::message('commentaire modifié avec succès!','success'));
+        return redirect()->to('dashboard/comment/index')->with('message', MyAlert::message('commentaire modifié avec succès!','success'));
     }
 
     public function updateStatus($id)
@@ -88,7 +88,7 @@ class CommentController extends Controller
         else $comment->status = 'publié';
         $comment->update();
 
-        return back()->with('message', Alert::message('commentaire '.$comment->status. ' avec succès!' ,'success'));
+        return back()->with('message', MyAlert::message('commentaire '.$comment->status. ' avec succès!' ,'success'));
     }
 
     public function updateSpamStatus($id)
@@ -99,7 +99,7 @@ class CommentController extends Controller
         else $comment->status = 'spam';
         $comment->update();
 
-        return back()->with('message', Alert::message('statut du commentaire modifié en :'.$comment->status. ' avec succès!' ,'success'));
+        return back()->with('message', MyAlert::message('statut du commentaire modifié en :'.$comment->status. ' avec succès!' ,'success'));
     }
 
     /**
@@ -111,6 +111,6 @@ class CommentController extends Controller
     public function destroy($id)
     {
         Comment::destroy($id);
-        return back()->with ('message', Alert::message('commentaire supprimé avec succès!','danger'));
+        return back()->with ('message', MyAlert::message('commentaire supprimé avec succès!','danger'));
     }
 }

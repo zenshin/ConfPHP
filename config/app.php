@@ -147,7 +147,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\MyHtmlServiceProvider::class,
         LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
-        App\Providers\AlertServiceProvider::class,
+        App\Providers\MyAlertServiceProvider::class,
 
     ],
 
@@ -204,7 +204,7 @@ return [
          * Application Facades
          */
         'MyHtml'    => App\Facades\MyHtml::class,
-        'Alert'    => App\Facades\Alert::class,
+        'MyAlert'    => App\Facades\MyAlert::class,
 
     ],
 

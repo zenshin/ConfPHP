@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class Alert
+class MyAlert
 
 {
     public function message($message,$type)

@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use \Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Input;
-use App\Facades\Alert;
+use App\Facades\MyAlert;
 
 class PostController extends Controller
 {
@@ -91,7 +91,7 @@ class PostController extends Controller
             $post->save();
         }
 
-        return redirect()->to('dashboard')->with('message', Alert::message('conférence "' .$post->title. '" créée avec succès','success'));
+        return redirect()->to('dashboard')->with('message', MyAlert::message('conférence "' .$post->title. '" créée avec succès','success'));
     }
 
     /**
@@ -143,7 +143,7 @@ class PostController extends Controller
         }
 
 
-        return redirect()->to('dashboard')->with('message', Alert::message('conférence "' . $post->title . '" modifiée avec succès', 'info'));
+        return redirect()->to('dashboard')->with('message', MyAlert::message('conférence "' . $post->title . '" modifiée avec succès', 'info'));
     }
 
     public function updateStatus($id)
@@ -154,7 +154,7 @@ class PostController extends Controller
         else $post->status = 'publié';
         $post->update();
 
-        return redirect()->to('dashboard')->with('message', Alert::message('Conférence ' .$post->status. 'e avec succès', 'info'));
+        return redirect()->to('dashboard')->with('message', MyAlert::message('Conférence ' .$post->status. 'e avec succès', 'info'));
     }
 
     /**
@@ -167,6 +167,6 @@ class PostController extends Controller
     {
         Post::destroy($id);
 
-        return redirect()->to('dashboard')->with('message', Alert::message('conférence supprimée avec succès', 'danger'));
+        return redirect()->to('dashboard')->with('message', MyAlert::message('conférence supprimée avec succès', 'danger'));
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Helpers\Alert;
+use App\Helpers\MyAlert;
 
-class AlertServiceProvider extends ServiceProvider
+class MyAlertServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -25,7 +25,7 @@ class AlertServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('alert', function(){
-            return new Alert();
+            return new MyAlert();
         });
     }
 }
