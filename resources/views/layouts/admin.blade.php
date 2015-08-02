@@ -77,25 +77,6 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-
-    {{--<!-- jQuery -->--}}
-    {{--<script src="{{ asset('assets/js/jquery.min.js') }}"></script>--}}
-
-    {{--<!-- Bootstrap Core JavaScript -->--}}
-    {{--<script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>--}}
-
-    {{--<!-- Morris Charts JavaScript -->--}}
-    {{--<script src="{{ asset('assets/startbootstrap-sb-admin-1.0.3/js/plugins/morris/raphael.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/startbootstrap-sb-admin-1.0.3/js/plugins/morris/morris.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/startbootstrap-sb-admin-1.0.3/js/plugins/morris/morris-data.js') }}"></script>--}}
-
-    {{--<!-- eonasdan-bootstrap-datetimepicker Datepicker-->--}}
-    {{--<script src="{{ asset('assets/bower_components/moment/min/moment.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>--}}
-
-    {{--<script src="{{ asset('assets/js/main.js')}}"></script>--}}
-
     <!-- jQuery -->
     {!! HTML::script('assets/js/jquery-2.1.4.min.js') !!}
     <!-- Bootstrap Core JavaScript -->

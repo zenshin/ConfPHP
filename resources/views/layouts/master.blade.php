@@ -23,7 +23,7 @@
 
 
 @section('sidebar')
-<section id="sidebar" class="col-sm-12 col-md-4 col-lg-4">
+<section id="sidebar" class="col-sm-12 col-md-8 col-lg-4">
     <h1>sponsors</h1>
     <a href="http://www.elao.com/fr"><img class="logo" src="{{asset('assets/images/logos/elao_logo_150px.png')}}" alt="elao_logo"></a>
     <a href="http://www.zol.fr/"><img class="logo" src="{{asset('assets/images/logos/zol-logo.png')}}" alt="zol_logo"></a>
