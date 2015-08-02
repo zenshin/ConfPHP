@@ -1,27 +1,27 @@
-## Laravel PHP Framework
+## Conf PHP
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Installation :
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+To install Conf PHP :
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+1 Clone the repository running the code below:
 
-## Official Documentation
+    git clone https://github.com/zenshin/ConfPHP.git
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+2 Execute the install.sh file
 
-## Contributing
+    sh install.sh
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+3 Open your favourite web browser on the link below:
 
-## Security Vulnerabilities
+    http://localhost:8000
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## What's included?
+        PHP in case you don't already have it : php 5.5.9,
+        A nice Framework : laravel 5.1,
+        An extension to manage date functions : nesbot/carbon 1.2,
+        An extension to manage Html and Form building classes : illuminate/html 5.0,
+        An extension to manage captcha : captcha-com/laravel-captcha 3,
+### Author
 
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Zenshin
