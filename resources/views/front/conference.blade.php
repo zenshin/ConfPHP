@@ -29,6 +29,7 @@
         </article>
     </section>
     <section>
+        @include('front.partials.alert')
         @if(true)
             <h2>Commentaires :</h2>
             @foreach($post->getComment() as $c)

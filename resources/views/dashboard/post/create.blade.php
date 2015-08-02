@@ -25,6 +25,10 @@
         {!! Form::textarea('content', old('content'), ['class'=>'form-control', 'rows'=>3, 'required']) !!}</p>
     {!! $errors->first('content', '<span class="help-block">:message</span>') !!}
 
+    <p>{!! form::label('url_site','lien vers le site de la conférence:') !!}
+        {!! Form::text('url_site', old('url_site'), ['class'=>'form-control']) !!}</p>
+    {!! $errors->first('url_site', '<span class="help-block">:message</span>') !!}
+
     <div class="container">
         <div class="form-group input-group col-md-4">
             <div class='input-group date' id='datetimepicker6'>

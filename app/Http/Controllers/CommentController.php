@@ -10,7 +10,8 @@ use App\Http\Requests\CommentRequest;
 use App\Comment;
 use App\Post;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Alert;
+use App\Facades\Alert;
+
 
 class CommentController extends Controller
 {
@@ -32,11 +33,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-//        $comments = Comment::all();
-//        $posts = Post::all();
-//
-//        return view('dashboard.comment.create', compact('comments','posts'));
-//
+
     }
 
     /**
@@ -48,8 +45,7 @@ class CommentController extends Controller
     {
         Comment::create($request->all());
 
-//        return back()->with('message', Alert::message('commentaire envoyé avec succès! Il sera publié après vérification de l\'équipe','success'));
-        return back();
+        return back()->with('message', Alert::message('commentaire envoyé avec succès! Il sera publié après vérification de l\'équipe','success'));
     }
 
     /**
@@ -60,9 +56,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-//        $comment = Comment::find($id);
-//
-//        return view('comment.show',compact('comment'));
+
     }
 
     /**
@@ -102,7 +96,7 @@ class CommentController extends Controller
         $comment = Comment::find($id);
 
         if ($comment->status == 'publié'|'dépublié') $comment->status = 'spam';
-        else $comment->status = 'dépublié';
+        else $comment->status = 'spam';
         $comment->update();
 
         return back()->with('message', Alert::message('statut du commentaire modifié en :'.$comment->status. ' avec succès!' ,'success'));

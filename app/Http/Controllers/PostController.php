@@ -6,12 +6,12 @@ use App\Post;
 use App\Comment;
 use App\Tag;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
-
-use Alert;
+use \Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Input;
+use App\Facades\Alert;
 
 class PostController extends Controller
 {
@@ -71,16 +71,22 @@ class PostController extends Controller
         $post = Post::create($request->all());
         $post->tags()->attach($request->input('tags'));
 
-        if($request->hasFile('thumbnail_link'))
+        if(Input::file())
         {
-            $file = $request->file('thumbnail_link');
+            $image = Input::file('thumbnail_link');
 
-            $ext = $file->getClientOriginalExtension();
+            $ext = $image->getClientOriginalExtension();
 
-            $fileName = $post->slug .'.'. $ext;
+            $fileName = $post->slug . '.' . $ext;
 
-            $file->move('./assets/images/confs', $fileName);
+            $path = public_path('./assets/images/confs/' . $fileName);
 
+            Image::make($image
+                ->getRealPath())
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($path);
             $post->thumbnail_link = $fileName;
             $post->save();
         }
@@ -116,16 +122,22 @@ class PostController extends Controller
         $post->update($request->all());
         $post->tags()->attach($request->input('tags'));
 
-        if($request->hasFile('thumbnail_link'))
+        if(Input::file())
         {
-            $file = $request->file('thumbnail_link');
+            $image = Input::file('thumbnail_link');
 
-            $ext = $file->getClientOriginalExtension();
+            $ext = $image->getClientOriginalExtension();
 
-            $fileName = $post->slug .'.'. $ext;
+            $fileName = $post->slug . '.' . $ext;
 
-            $file->move('./assets/images/confs', $fileName);
+            $path = public_path('./assets/images/confs/' . $fileName);
 
+            Image::make($image
+                ->getRealPath())
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($path);
             $post->thumbnail_link = $fileName;
             $post->save();
         }

@@ -24,25 +24,37 @@
                 <div class="btn-toolbar" role="toolbar">
                     <div class="btn-group" role="group">
 
+                        <td>
                         {!! Form::open(['id' => $comment->id, 'class' => 'status', 'url' => 'comment/'.$comment->id.'/updateStatus', 'method' => 'PUT']) !!}
                         <button class="btn btn-warning">
-                            {{ $comment->status == 'publish' ? 'Unpublish' : 'Publish' }}
+                            {{ $comment->status == 'publié' ? 'Dépublier' : 'Publier' }}
                         </button>
                         {!! Form::close() !!}
-
-                        <button type="button" class="btn btn-info">{!! MyHtml::link('Editer', url('comment/'.$comment->id.'/edit')) !!}</button>
+                        </td>
+                        <td>
+                            {!! Form::open(['id' => $comment->id, 'class' => 'status', 'url' => 'comment/'.$comment->id.'/updateSpamStatus', 'method' => 'PUT']) !!}
+                            <button class="btn btn-success">
+                                {{ $comment->status = 'spam' }}
+                            </button>
+                            {!! Form::close() !!}
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-info">{!! MyHtml::link('Editer', url('dashboard/comment/'.$comment->id.'/edit')) !!}</button>
+                        </td>
+                        <td>
 
                         {!! Form::open(['class' => 'delete', 'url' => 'comment/'.$comment->id, 'method' => 'DELETE']) !!}
                         <button class="btn btn-danger">
                             Supprimer
                         </button>
                         {!! Form::close() !!}
-
+                        </td>
                     </div>
                 </div>
 
 
             </div>
+    </div>
             @endforeach
 </article>
             @else

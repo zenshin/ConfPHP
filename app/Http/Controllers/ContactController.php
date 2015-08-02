@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use LaravelCaptcha\Integration\BotDetectCaptcha;
+use App\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -67,7 +68,8 @@ class ContactController extends Controller
         $validator = Validator::make($data, $rules);
 
         //If everything is correct than run passes.
-        if ($validator->passes()) {
+        if ($validator->passes())
+        {
 
             if (!$isHuman || $validator->fails()) {
                 if (!$isHuman) {
@@ -92,14 +94,12 @@ class ContactController extends Controller
             });
             return redirect()
                 ->back()
-                ->with('status', 'Your message was sent successfully.');
+                ->with('message', Alert::message('email envoyé avec succès!','success'));
 
-
-//            return View::make('contact.form', compact('title'));
-//        }else{
-////return contact form with errors
-//            return Redirect::to('/contact')->withErrors($validator);
-//        }
+        }
+        else
+        {
+            return Redirect::to('/contact')->withErrors($validator);
         }
     }
 }
